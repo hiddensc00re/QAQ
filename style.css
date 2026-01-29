@@ -114,10 +114,10 @@ body {
   top: 32%;                 /* centrata verticalmente */
   right: 0;                 /* bordo destro */
   transform: translateY(-50%); /* centrata perfettamente verticalmente */
-  width: 300px;             
-  height: 300px;            
+  width: 100px;             
+  height: 100px;            
   object-fit: cover;        /* mantiene proporzioni */
-  margin-right: -150px;
+  margin-right: -50px;
   z-index: 9;
 }
   /* mostra solo la metà sinistra */
@@ -127,8 +127,8 @@ body {
   position: fixed;        /* fissato rispetto alla viewport */
   bottom: 0;              /* allineato in basso */
   left: 0;                /* allineato a sinistra */
-  width: 500px;           /* dimensione visibile del quarto di cerchio */
-  height: 500px;
+  width: 200px;           /* dimensione visibile del quarto di cerchio */
+  height: 200px;
   object-fit: cover;      /* mantiene le proporzioni */
   transform: translate(-50%, 50%); 
   /* sposta il cerchio intero così che il quarto in alto a dx coincida con l'angolo in basso a sx */
