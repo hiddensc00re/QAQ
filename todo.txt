@@ -1,7 +1,9 @@
 mobile:
 
 
-check github
+git add .
+git commit -m "Aggiornamento sito"
+git push
 
 PROMPT
 da essere posizionato in un layout mobile per cui l'elemento che ti chiedo di creare deve essere non molto grande e modulabile nel css indicandomi dove con un commento, è una levetta di un selettore simile ad una chitarra elettrica pensala tutta in metallo questa levetta ha due posizioni A e B, 
