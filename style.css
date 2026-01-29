@@ -127,8 +127,8 @@ body {
   position: fixed;        /* fissato rispetto alla viewport */
   bottom: 0;              /* allineato in basso */
   left: 0;                /* allineato a sinistra */
-  width: 600px;           /* dimensione visibile del quarto di cerchio */
-  height: 600px;
+  width: 500px;           /* dimensione visibile del quarto di cerchio */
+  height: 500px;
   object-fit: cover;      /* mantiene le proporzioni */
   transform: translate(-50%, 50%); 
   /* sposta il cerchio intero così che il quarto in alto a dx coincida con l'angolo in basso a sx */
