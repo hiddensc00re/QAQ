@@ -1,0 +1,63 @@
+mobile:
+
+
+PROMPT
+da essere posizionato in un layout mobile per cui l'elemento che ti chiedo di creare deve essere non molto grande e modulabile nel css indicandomi dove con un commento, è una levetta di un selettore simile ad una chitarra elettrica pensala tutta in metallo questa levetta ha due posizioni A e B, 
+
+
+WOport1C 
+WOport2C 
+WOstripeC
+WObutton 
+WOtextC
+WOmedia
+WOjs 
+
+
+
+NO SCROLL, DISPLAY NONE REVERSE, 
+IMG PORT HANNO ALTRE IMMAGINI NELLA VERSIONE MOBILE E CAMBIANO CON ALTRE SELEZIONATE NON TUTTE, SLIDER BACK ON 0 TOUCH OUT, AT THE 0 SLIDER NONE GOES, Illuminazione progressiva with JS and turn off, velocita massima dei dischi entro una certa soglia da definire non puo essere troppo veloce e di conseguenza l'altro disco non puo andare troppo piano allo stato 0 dischi fermi logo spento logo raggiunge massima illuminazione al top slide accelerazione progressiva sia nel caso di slide che di point top jump,
+button selettore to hide nella versione desktop   
+__
+
+
+desktop:
+
+bottone
+testo centrale
+fade slow img e text from click
+
+display
+logo inside
+posizione testo e dimensioni
+
+polaroid
+show issue fix
+js per le rotazioni ma forse basta il css
+testo "all mixed" appare su polaroid con logo
+
+vinyl
+
+faderimg
+
+
+__
+selezionare file grafici
+rendere file grafici adatti al carosello
+graphics upload
+il testo relativo ad ogni concept grafico
+importare file img definitivi nel folder dedicato
+fare il copy di tutto il progetto
+upload su quoteandquit.com
+
+
+__
+time
+
+M
+M
+G
+V
+S
+S 
+
