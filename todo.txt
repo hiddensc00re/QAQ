@@ -1,27 +1,53 @@
 mobile:
 
-
 git add .
 git commit -m "Aggiornamento sito"
 git push
 
-PROMPT
-da essere posizionato in un layout mobile per cui l'elemento che ti chiedo di creare deve essere non molto grande e modulabile nel css indicandomi dove con un commento, è una levetta di un selettore simile ad una chitarra elettrica pensala tutta in metallo questa levetta ha due posizioni A e B, 
+è IL JS, dove? nell assegnazione da mobile a desk
+
+ 
+
+
 
 
 WOport1C 
 WOport2C 
 WOstripeC
-WObutton 
 WOtextC
-WOmedia
-WOjs 
+WOjsC
 
+WObutton 
+WOmedia
+ 
 
 
 NO SCROLL, DISPLAY NONE REVERSE, 
 IMG PORT HANNO ALTRE IMMAGINI NELLA VERSIONE MOBILE E CAMBIANO CON ALTRE SELEZIONATE NON TUTTE, SLIDER BACK ON 0 TOUCH OUT, AT THE 0 SLIDER NONE GOES, Illuminazione progressiva with JS and turn off, velocita massima dei dischi entro una certa soglia da definire non puo essere troppo veloce e di conseguenza l'altro disco non puo andare troppo piano allo stato 0 dischi fermi logo spento logo raggiunge massima illuminazione al top slide accelerazione progressiva sia nel caso di slide che di point top jump,
-button selettore to hide nella versione desktop   
+button selettore to hide nella versione desktop
+
+__
+PROMPT
+
+.
+un'immagine a forma di cerchio, dovrebbe relazionarsi allo spazio di un sito mobile rimanendo posizionata nell'angolo in basso a sinistra, di questo cerchio che ha il centro nel vertice di quell'angolo, viene mostrato solo il quarto in alto a destra, come se questo cerchio fosse diviso in quattro parti uguali, elabora in background che questa img html ha un determinato css che permetta questo risultato, io ho gia del codice sia css che js per il quale non ottengo il corretto posizionamento 
+
+id=slider id=port2 id=port1 id=m
+dati questi elementi in html, lo slider non ha un pomello visibile e nel momento in cui viene caricata la pagina si trova nel punto 0, è possibile attivare e mettere in funzione lo slider tenendolo premuto ed aumentare la quantità di slide trascinandolo fino al raggiungimento del massimo, 
+nel momento in cui viene rilasciato lo slider torna nel punto 0, lo slider regola la velocita' del port1 e del port2, i quali all'attivazione dello slider girano su stessi con rotazione infinita fin tanto che lo slider viene tenuto premuto.
+ 
+girano su stessi con i rispettivi comportamenti:
+port1 gira in senso orario e parte da una velocita' ridotta
+port2 gira in senso antiorario e parte dalla massima velocita' raggiungibile da port1 alla quantità massima di slide raggiungibile, per cui le velocita' dei rispettivi port1 e port2 sono inversamente proporzionali, determina un parametro modificabile (segnalando con un commento) per stabilire quale sia la velocita' massima raggiungibile nel momento in cui lo slide si trova in posizione 100 ovvero il punto in cui tenendo premuto ed attivato sia piu' distante dallo 0 
+
+l'elemento m invece si illumina seguendo la gradualita' della quantità di slider inserita, quindi un illuminazione progressiva, se lo slider viene attivato nel punto 0 la luminosita' sara' al minimo ma si accendera' nel punto 100 l'illuminazione dell'elemento m sara' al massimo e seguira' una modalita progressiva dove sia percepibile il passaggio dell'aumentare della luminosita' 
+
+prima di procedere riassumi e fai un check dove assumi di aver capito quali siano le dinamiche esprimibili attraverso javascript senza che tu me ne dia riscontro, quindi fallo in background per poter generare codice migliore per farlo tieni conto di questo javascript che ti sto passando, andando a generare uno sostitutivo che funzioni solo per le specifiche richieste ma parti dall'idea che c'era questo in precedenza, per ogni parte di codice che generi fai un commento sintetico con quello che quella porzione di codice fa tecnicamente, quindi ora leggi il codice e procedi
+      
+
+
+.
+da essere posizionato in un layout mobile per cui l'elemento che ti chiedo di creare deve essere non molto grande e modulabile nel css indicandomi dove con un commento, è una levetta di un selettore simile ad una chitarra elettrica pensala tutta in metallo questa levetta ha due posizioni A e B,    
 __
 
 

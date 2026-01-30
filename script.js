@@ -2,34 +2,45 @@
    SELEZIONE ELEMENTI DOM
    ===================================================== */
 
-// Slider di controllo
+// Slider principale
 const slider = document.getElementById("slider");
 
-// Immagini vinile: una in d1 e una in d3
-const port1 = document.querySelector("#d1 .port");
-const port2 = document.querySelector("#d3 .port");
+// Elementi rotanti (port)
+const port1 = document.querySelector("#port1");
+const port2 = document.querySelector("#port2");
 
-// LED di feedback visivo
-const leds = document.querySelectorAll(".leds span");
+// Elemento LED/illuminazione
+const m = document.getElementById("m");
 
 
 /* =====================================================
-   VARIABILI DI STATO (ROTazione & VELOCITÀ)
+   PARAMETRI CONFIGURABILI
    ===================================================== */
 
-// Angoli di rotazione attuali
-let angle1 = 0;
+// 🔧 PARAMETRO MODIFICABILE: velocità massima raggiungibile
+const MAX_SPEED = 4; // rotazioni/frame quando slider = 100
+
+
+/* =====================================================
+   VARIABILI DI STATO
+   ===================================================== */
+
+// Angoli di rotazione attuali per port1 e port2
+let angle1 = 10;
 let angle2 = 0;
 
-// Velocità di rotazione (dinamiche)
+// Velocità dinamiche (aggiornate dall'input dello slider)
 let speed1 = 0;
 let speed2 = 0;
+
+// Flag per tracciare se lo slider è attivo
+let isSliderActive = false;
 
 
 /* =====================================================
    FUNZIONE DI MAPPING LINEARE
-   Trasforma un valore da un range a un altro
-   (usata per slider → velocità / slider → LED)
+   Converte un valore da un range a un altro
+   Esempio: map(50, 0, 100, 0, MAX_SPEED) = MAX_SPEED/2
    ===================================================== */
 
 function map(value, inMin, inMax, outMin, outMax) {
@@ -38,102 +49,137 @@ function map(value, inMin, inMax, outMin, outMax) {
 
 
 /* =====================================================
-   GESTIONE SLIDER
-   - port1 accelera
-   - port2 rallenta
+   GESTIONE SLIDER - INPUT DRAG
+   Calcola velocità proporzionali alla posizione dello slider
    ===================================================== */
 
-slider.addEventListener("input", () => {
-  const val = Number(slider.value);
+slider.addEventListener("input", (e) => {
+  isSliderActive = true;
+  const val = Number(e.target.value);
 
-  // Vinile in d1: da fermo a veloce (senso orario)
-  speed1 = map(val, 0, 100, 0, 6);
+  // Port1: accelera da 0 a MAX_SPEED (senso orario)
+  speed1 = map(val, 0, 100, 0, MAX_SPEED);
 
-  // Vinile in d3: da veloce a fermo (senso antiorario)
-  speed2 = map(val, 0, 100, 6, 0);
+  // Port2: decelera da MAX_SPEED a 0 (senso antiorario)
+  // Relazione inversa garantita dal map inverso
+  speed2 = map(val, 0, 100, MAX_SPEED, 0);
 
-  // Aggiorna LED in base al valore dello slider
-  updateLeds(val);
+  // Aggiorna illuminazione elemento M in base al valore
+  updateIllumination(val);
 });
 
 
 /* =====================================================
-   GESTIONE LED
-   Mostrano visivamente il livello dello slider
+   GESTIONE RILASCIO SLIDER
+   Reset della posizione a 0 e arresto della rotazione
    ===================================================== */
 
-function updateLeds(val) {
-  const level = Math.round(map(val, 0, 100, 0, leds.length));
+/* =====================================================
+   GESTIONE TOUCH & MOUSE - INIZIO DRAG
+   Attiva la rotazione quando l'utente tocca/preme lo slider
+   ===================================================== */
 
-  leds.forEach((led, index) => {
-    led.classList.toggle("active", index < level);
+["mousedown", "touchstart"].forEach((eventType) => {
+  slider.addEventListener(eventType, (e) => {
+    isSliderActive = true;
+    // Previene comportamenti di default su mobile (scroll, zoom)
+    e.preventDefault();
   });
+});
+
+
+/* =====================================================
+   GESTIONE TOUCH & MOUSE - DURANTE DRAG
+   Aggiorna il valore dello slider durante il trascinamento touch
+   Necessario perché touch non trigga "input" come mouse
+   ===================================================== */
+
+slider.addEventListener("touchmove", (e) => {
+  // Ottiene le coordinate del tocco
+  const touch = e.touches[0];
+  
+  // Ottiene le dimensioni e posizione dello slider
+  const sliderRect = slider.getBoundingClientRect();
+  
+  // Calcola la posizione percentuale del tocco relativa allo slider
+  const touchX = touch.clientX - sliderRect.left;
+  const sliderWidth = sliderRect.width;
+  const percentage = Math.max(0, Math.min(100, (touchX / sliderWidth) * 100));
+  
+  // Aggiorna il valore dello slider
+  slider.value = percentage;
+  
+  // Forza l'evento input per aggiornare velocità e illuminazione
+  slider.dispatchEvent(new Event("input", { bubbles: true }));
+}, { passive: false });
+
+
+/* =====================================================
+   GESTIONE TOUCH & MOUSE - FINE DRAG
+   Resetta slider e arresta rotazione al rilascio
+   Funziona solo quando il tocco termina sullo slider
+   ===================================================== */
+
+["mouseup", "touchend"].forEach((eventType) => {
+  slider.addEventListener(eventType, (e) => {
+    e.preventDefault();
+    slider.value = 0;
+    speed1 = 0;
+    speed2 = 0;
+    isSliderActive = false;
+    updateIllumination(0);
+  });
+});
+
+
+/* =====================================================
+   GESTIONE ILLUMINAZIONE ELEMENTO M
+   Aumenta progressivamente brightness e opacity
+   con il valore dello slider (0-100)
+   ===================================================== */
+
+function updateIllumination(sliderValue) {
+  // Calcola intensità lineare (0.5 = minimo, 2.0 = massimo)
+  const brightness = 0.5 + (sliderValue / 100) * 1.5;
+  
+  // Calcola opacità lineare (0.4 = minimo, 1.0 = massimo)
+  const opacity = 0.4 + (sliderValue / 100) * 0.6;
+  
+  // Calcola raggio glow progressivo (0-20px)
+  const glowRadius = (sliderValue / 100) * 20;
+
+  // Applica filtri CSS per effetto luminoso
+  m.style.filter = `
+    brightness(${brightness})
+    drop-shadow(0 0 ${glowRadius}px #0f0)
+  `;
+  m.style.opacity = opacity;
 }
 
 
 /* =====================================================
-   LOOP DI ANIMAZIONE
-   - Rotazione continua
-   - Nessun reset
-   - requestAnimationFrame per fluidità
+   LOOP DI ANIMAZIONE - requestAnimationFrame
+   Aggiorna la rotazione continua dei port
+   Esegue ogni frame per massima fluidità
    ===================================================== */
 
 function animate() {
-  // Aggiornamento angoli
-  angle1 += speed1;
-  angle2 -= speed2;
+  // Se slider attivo: incrementa angoli di rotazione
+  if (isSliderActive) {
+    angle1 += speed1;        // Port1 orario (incremento positivo)
+    angle2 -= speed2;        // Port2 antiorario (decremento)
+  }
 
-  // Applicazione trasformazioni
+  // Applica rotazione CSS ai port
   port1.style.transform = `rotate(${angle1}deg)`;
   port2.style.transform = `rotate(${angle2}deg)`;
 
-  // Loop continuo
+  // Richiama la prossima iterazione
   requestAnimationFrame(animate);
 }
 
-// Avvio animazione (le velocità iniziano a 0)
+// Avvio del loop di animazione
 animate();
-//ROTAZIONE E MOBILE//
-
-const slider = document.getElementById("slider");
-const leds = document.querySelectorAll(".leds span");
-
-function updateLeds(value) {
-  const max = slider.max;
-  const activeCount = Math.round((value / max) * leds.length);
-
-  leds.forEach((led, index) => {
-    led.classList.toggle("active", index < activeCount);
-  });
-}
-
-slider.addEventListener("input", e => {
-  updateLeds(e.target.value);
-});
-
-// ritorno automatico a zero
-["mouseup", "touchend"].forEach(evt => {
-  slider.addEventListener(evt, () => {
-    slider.value = 0;
-    updateLeds(0);
-  });
-});
-
-//==BACK PUSH==//
-const slider = document.getElementById("slider");
-const logo = document.getElementById("m");
-
-slider.addEventListener("input", () => {
-  const value = slider.value;        // 0 - 100
-  const intensity = 0.5 + value / 100 * 1.5;
-
-  logo.style.filter = `
-    brightness(${intensity})
-    drop-shadow(0 0 ${value / 5}px #0f0)
-  `;
-  logo.style.opacity = 0.4 + value / 100 * 0.6;
-});
-//==ILLUMINAZIONE==//
 
 // ============================================================
 // FEATURE 9: Stessa fonte dati - Array condiviso di coppie immagine-testo
