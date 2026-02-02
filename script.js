@@ -1,3 +1,74 @@
+/* ========================================
+   CRAVE METAL SWITCH FUNCTIONALITY
+   ======================================== */
+
+document.addEventListener('DOMContentLoaded', function() {
+    const metalSwitch = document.getElementById('craveMetalSwitch');
+    
+    if (!metalSwitch) {
+        console.warn('Crave Metal Switch: elemento #craveMetalSwitch non trovato');
+        return;
+    }
+
+    const switchToggle = document.getElementById('metalSwitchToggle');
+    const switchIndicator = document.getElementById('metalSwitchIndicator');
+    let isActive = false;
+
+    // Click handler
+    if (switchToggle) {
+        switchToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleSwitch();
+        });
+
+        // Touch support
+        switchToggle.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            toggleSwitch();
+        });
+
+        // Keyboard support (spacebar quando focus)
+        switchToggle.addEventListener('keydown', function(e) {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                toggleSwitch();
+            }
+        });
+    }
+
+    function toggleSwitch() {
+        isActive = !isActive;
+        switchToggle.classList.add('glitch');
+        
+        setTimeout(() => {
+            switchToggle.classList.remove('glitch');
+            switchToggle.classList.toggle('active');
+            
+            // Dispatch custom event
+            const event = new CustomEvent('metalSwitchToggle', {
+                detail: { isActive: isActive }
+            });
+            metalSwitch.dispatchEvent(event);
+            
+            // Log per debug
+            console.log('Crave Metal Switch:', isActive ? 'ON' : 'OFF');
+        }, 75);
+    }
+
+    // API pubblica
+    window.CraveMetalSwitch = {
+        toggle: toggleSwitch,
+        setActive: function(active) {
+            if (active !== isActive) {
+                toggleSwitch();
+            }
+        },
+        getState: function() {
+            return isActive;
+        }
+    };
+});
+
 
 //   SELEZIONE ELEMENTI DOM
 

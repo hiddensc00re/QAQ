@@ -1,32 +1,3 @@
-mobile:
-
-git add .
-git commit -m "Aggiornamento sito"
-git push
-
-è IL JS, dove? nell assegnazione da mobile a desk
-
- 
-
-
-
-
-WOport1C 
-WOport2C 
-WOstripeC
-WOfreccia
-WOtextC
-WOjsC
-
-WObutton 
-WOmedia
- 
-
-
-NO SCROLL, DISPLAY NONE REVERSE, 
-IMG PORT HANNO ALTRE IMMAGINI NELLA VERSIONE MOBILE E CAMBIANO CON ALTRE SELEZIONATE NON TUTTE, SLIDER BACK ON 0 TOUCH OUT, AT THE 0 SLIDER NONE GOES, Illuminazione progressiva with JS and turn off, velocita massima dei dischi entro una certa soglia da definire non puo essere troppo veloce e di conseguenza l'altro disco non puo andare troppo piano allo stato 0 dischi fermi logo spento logo raggiunge massima illuminazione al top slide accelerazione progressiva sia nel caso di slide che di point top jump,
-button selettore to hide nella versione desktop
-
 __
 PROMPT
 
@@ -46,9 +17,40 @@ l'elemento m invece si illumina seguendo la gradualita' della quantità di slide
 prima di procedere riassumi e fai un check dove assumi di aver capito quali siano le dinamiche esprimibili attraverso javascript senza che tu me ne dia riscontro, quindi fallo in background per poter generare codice migliore per farlo tieni conto di questo javascript che ti sto passando, andando a generare uno sostitutivo che funzioni solo per le specifiche richieste ma parti dall'idea che c'era questo in precedenza, per ogni parte di codice che generi fai un commento sintetico con quello che quella porzione di codice fa tecnicamente, quindi ora leggi il codice e procedi
       
 
-
 .
-da essere posizionato in un layout mobile per cui l'elemento che ti chiedo di creare deve essere non molto grande e modulabile nel css indicandomi dove con un commento, è una levetta di un selettore simile ad una chitarra elettrica pensala tutta in metallo questa levetta ha due posizioni A e B,    
+da essere posizionato in un layout mobile per cui l'elemento che ti chiedo di creare deve essere non molto grande e modulabile nel css indicandomi dove con un commento, è una levetta di un selettore simile ad una chitarra elettrica pensala tutta in metallo questa levetta ha due posizioni A e B
+__
+
+
+git add .
+git commit -m "Aggiornamento sito"
+git push
+__ 
+
+
+mobile:
+
+
+
+è IL JS, dove? nell assegnazione da mobile a desk
+WOport1C 
+WOport2C 
+WOstripeC
+WOfreccia
+WOtextC
+WOjsC
+
+WObutton 
+WOmedia
+ 
+
+ALL'ACCENSIONE APPARE LA SCRITTA
+NO SCROLL, 
+DISPLAY NONE REVERSE, 
+IMG PORT HANNO ALTRE IMMAGINI NELLA VERSIONE MOBILE E CAMBIANO CON ALTRE SELEZIONATE NON TUTTE, SLIDER BACK ON 0 TOUCH OUT, AT THE 0 SLIDER NONE GOES, Illuminazione progressiva with JS and turn off, velocita massima dei dischi entro una certa soglia da definire non puo essere troppo veloce e di conseguenza l'altro disco non puo andare troppo piano allo stato 0 dischi fermi logo spento logo raggiunge massima illuminazione al top slide accelerazione progressiva sia nel caso di slide che di point top jump,
+button selettore to hide nella versione desktop
+
+   
 __
 
 
