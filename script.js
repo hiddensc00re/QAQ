@@ -1,6 +1,6 @@
-/* =====================================================
-   SELEZIONE ELEMENTI DOM
-   ===================================================== */
+
+//   SELEZIONE ELEMENTI DOM
+
 
 // Slider principale
 const slider = document.getElementById("slider");
@@ -13,17 +13,17 @@ const port2 = document.querySelector("#port2");
 const m = document.getElementById("m");
 
 
-/* =====================================================
-   PARAMETRI CONFIGURABILI
-   ===================================================== */
+
+// PARAMETRI CONFIGURABILI
+
 
 // 🔧 PARAMETRO MODIFICABILE: velocità massima raggiungibile
 const MAX_SPEED = 4; // rotazioni/frame quando slider = 100
 
 
-/* =====================================================
-   VARIABILI DI STATO
-   ===================================================== */
+
+//   VARIABILI DI STATO
+
 
 // Angoli di rotazione attuali per port1 e port2
 let angle1 = 10;
@@ -37,21 +37,21 @@ let speed2 = 0;
 let isSliderActive = false;
 
 
-/* =====================================================
-   FUNZIONE DI MAPPING LINEARE
-   Converte un valore da un range a un altro
-   Esempio: map(50, 0, 100, 0, MAX_SPEED) = MAX_SPEED/2
-   ===================================================== */
+
+//   FUNZIONE DI MAPPING LINEARE
+//   Converte un valore da un range a un altro
+//   Esempio: map(50, 0, 100, 0, MAX_SPEED) = MAX_SPEED/2
+
 
 function map(value, inMin, inMax, outMin, outMax) {
   return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
 }
 
 
-/* =====================================================
-   GESTIONE SLIDER - INPUT DRAG
-   Calcola velocità proporzionali alla posizione dello slider
-   ===================================================== */
+
+// GESTIONE SLIDER - INPUT DRAG
+// Calcola velocità proporzionali alla posizione dello slider
+
 
 slider.addEventListener("input", (e) => {
   isSliderActive = true;
@@ -69,15 +69,14 @@ slider.addEventListener("input", (e) => {
 });
 
 
-/* =====================================================
-   GESTIONE RILASCIO SLIDER
-   Reset della posizione a 0 e arresto della rotazione
-   ===================================================== */
 
-/* =====================================================
-   GESTIONE TOUCH & MOUSE - INIZIO DRAG
-   Attiva la rotazione quando l'utente tocca/preme lo slider
-   ===================================================== */
+// GESTIONE RILASCIO SLIDER
+//   Reset della posizione a 0 e arresto della rotazione
+
+
+//   GESTIONE TOUCH & MOUSE - INIZIO DRAG
+//   Attiva la rotazione quando l'utente tocca/preme lo slider
+
 
 ["mousedown", "touchstart"].forEach((eventType) => {
   slider.addEventListener(eventType, (e) => {
@@ -88,11 +87,10 @@ slider.addEventListener("input", (e) => {
 });
 
 
-/* =====================================================
-   GESTIONE TOUCH & MOUSE - DURANTE DRAG
-   Aggiorna il valore dello slider durante il trascinamento touch
-   Necessario perché touch non trigga "input" come mouse
-   ===================================================== */
+// GESTIONE TOUCH & MOUSE - DURANTE DRAG
+//   Aggiorna il valore dello slider durante il trascinamento touch
+//   Necessario perché touch non trigga "input" come mouse
+
 
 slider.addEventListener("touchmove", (e) => {
   // Ottiene le coordinate del tocco
@@ -114,11 +112,11 @@ slider.addEventListener("touchmove", (e) => {
 }, { passive: false });
 
 
-/* =====================================================
-   GESTIONE TOUCH & MOUSE - FINE DRAG
-   Resetta slider e arresta rotazione al rilascio
-   Funziona solo quando il tocco termina sullo slider
-   ===================================================== */
+
+// GESTIONE TOUCH & MOUSE - FINE DRAG
+// Resetta slider e arresta rotazione al rilascio
+// Funziona solo quando il tocco termina sullo slider
+
 
 ["mouseup", "touchend"].forEach((eventType) => {
   slider.addEventListener(eventType, (e) => {
@@ -132,11 +130,11 @@ slider.addEventListener("touchmove", (e) => {
 });
 
 
-/* =====================================================
-   GESTIONE ILLUMINAZIONE ELEMENTO M
-   Aumenta progressivamente brightness e opacity
-   con il valore dello slider (0-100)
-   ===================================================== */
+
+// GESTIONE ILLUMINAZIONE ELEMENTO M
+// Aumenta progressivamente brightness e opacity
+// con il valore dello slider (0-100)
+
 
 function updateIllumination(sliderValue) {
   // Calcola intensità lineare (0.5 = minimo, 2.0 = massimo)
@@ -157,11 +155,11 @@ function updateIllumination(sliderValue) {
 }
 
 
-/* =====================================================
-   LOOP DI ANIMAZIONE - requestAnimationFrame
-   Aggiorna la rotazione continua dei port
-   Esegue ogni frame per massima fluidità
-   ===================================================== */
+
+// LOOP DI ANIMAZIONE - requestAnimationFrame
+// Aggiorna la rotazione continua dei port
+// Esegue ogni frame per massima fluidità
+
 
 function animate() {
   // Se slider attivo: incrementa angoli di rotazione
@@ -181,6 +179,8 @@ function animate() {
 // Avvio del loop di animazione
 animate();
 
+
+/*
 // ============================================================
 // FEATURE 9: Stessa fonte dati - Array condiviso di coppie immagine-testo
 // ============================================================
