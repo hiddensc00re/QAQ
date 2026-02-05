@@ -103,11 +103,11 @@ body {
 }
 
 #slider::after {
-  content: ">";
+  content: "➾";
   position: absolute;
   right: 10px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) rotate(0deg);
   width: 93px;
   height: 24px;
   font-size: 40px;
