@@ -3,7 +3,6 @@
 *{
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 body {
   font-family: 'Playfair Display';
@@ -39,14 +38,12 @@ body {
   width: 100%;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  overflow: hidden;   
+  position: absolute;   
   /*border: 10px solid #000;*/ 
 }
 #d3 {
   width: 100%;
   /*position: relative;*/
-  overflow: hidden;
   /*border: 5px solid #000;*/  
 }
 
