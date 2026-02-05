@@ -86,7 +86,7 @@ body {
   border: none;
 }
 
-#slider::before {
+/*#slider::before {
   content: ">";
   position: absolute;
   left: 10px;
@@ -100,7 +100,7 @@ body {
   justify-content: center;
   color: #ffffff;
   pointer-events: none;
-}
+}*/
 
 #slider::after {
   content: "➾";
@@ -110,7 +110,7 @@ body {
   transform: translateY(-50%) rotate(0deg);
   width: 93px;
   height: 24px;
-  font-size: 40px;
+  font-size: 54px;
   display: flex;
   align-items: center;
   justify-content: center;

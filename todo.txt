@@ -1,14 +1,42 @@
-di questo html cosa inseriresti per creare due frecce che stanno rispettivamente sopra lo slider e siano visibili senza intaccare il funzionamento dello slider a livello js, quindi le frecce devono risultare visibili a partire da questo html e css
-            
+devo costruire questa dinamica in js:
 
+dato un bottone che viene premuto, acceso
+transizione di apparizione delle img, testo, logo e freccia
+con un tempo 
+
+dato lo stesso bottone che viene premuto, spento
+transizione di assolvimento, sparisce la freccia le img la scritta
+con un tempo
+
+
+__
+PROMPT
+
+ho uno slider che funziona correttamente, questo è il suo codice html
 <div class="mob" id="d2">
                     <p class="textDesign">QUESTODESIGNE’STATOSVILUPPATODAFLUSSIEMOZIONALI,LUOGHI,DIVERSETEMPE </p>
+                    
                     <div class="slider-container">
                     
-                    <input type="range" id="slider" min="0" max="100" value="0"> 
+                    <input type="range" id="slider" min="0" max="100" value="0">
+                    </div>
 
 
 
+questo il suo codice css
+#container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; 
+  /*align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 100vh;
+  */
+}
+.mob {
+  height: 100vh;
+}
 #d2 {
   order: 1;
   width: 100%;
@@ -53,12 +81,19 @@ di questo html cosa inseriresti per creare due frecce che stanno rispettivamente
   border: none;
 }
 
-elabora il contenuto, mantieni il codice in questo modo aggiungendo una parte che realizzi la visibilità delle frecce.
-__
-PROMPT
 
-.2D
-avendo gia una logica nel css e js circa il funzionamento dello slider, con delle caratteristiche gia' impostate, vorrei mantenere queste in funzionamento ed aggiungere delle frecce che hanno funzione visiva implementarle mantenendo il codice o cmq basandomi su questo. 
+
+partendo dalla rotazione dello slider e dal suo posizionamento dello spazio ho bisogno che appaiano delle frecce sopra allo slider, che non siano bottoni effettivi o che abbiano alcuna funziona in js, devono solo essere elementi grafici che appaiono lungo lo slider seguendo la sua rotazione
+
+l'utilizzo di position relative fa scomparire lo slider dal layout
+
+quindi assumi le informazioni e prima listami come procedere in quale modo, non creare codice
+
+devo creare elementi in html 
+devo poi definirli in css
+non mi serve aggiungere js al momento
+
+
 
 .
 un'immagine a forma di cerchio, dovrebbe relazionarsi allo spazio di un sito mobile rimanendo posizionata nell'angolo in basso a sinistra, di questo cerchio che ha il centro nel vertice di quell'angolo, viene mostrato solo il quarto in alto a destra, come se questo cerchio fosse diviso in quattro parti uguali, elabora in background che questa img html ha un determinato css che permetta questo risultato, io ho gia del codice sia css che js per il quale non ottengo il corretto posizionamento 
