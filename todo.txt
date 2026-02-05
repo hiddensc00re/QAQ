@@ -1,5 +1,64 @@
+di questo html cosa inseriresti per creare due frecce che stanno rispettivamente sopra lo slider e siano visibili senza intaccare il funzionamento dello slider a livello js, quindi le frecce devono risultare visibili a partire da questo html e css
+            
+
+<div class="mob" id="d2">
+                    <p class="textDesign">QUESTODESIGNE’STATOSVILUPPATODAFLUSSIEMOZIONALI,LUOGHI,DIVERSETEMPE </p>
+                    <div class="slider-container">
+                    
+                    <input type="range" id="slider" min="0" max="100" value="0"> 
+
+
+
+#d2 {
+  order: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  gap:30px;
+  z-index: 1200;
+}
+
+.slider-container{
+  z-index: 99;
+  height: 1600px;
+}
+#slider {
+  position: absolute;
+  width: 410px;
+  height: 83px;
+  top: 20px;
+  appearance: none;
+  background: #111;
+  border-radius: 200px;
+  transform: rotate(-222deg);
+  cursor: pointer;
+  z-index: 100;
+}
+#slider::-moz-range-track {
+  height: 120px;
+  background: #111;
+  border-radius: 10px;
+}
+#slider:focus {
+  outline: none;
+}
+#slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 0;
+  height: 0;
+}
+#slider::-moz-range-thumb {
+  width: 0;
+  height: 0;
+  border: none;
+}
+
+elabora il contenuto, mantieni il codice in questo modo aggiungendo una parte che realizzi la visibilità delle frecce.
 __
 PROMPT
+
+.2D
+avendo gia una logica nel css e js circa il funzionamento dello slider, con delle caratteristiche gia' impostate, vorrei mantenere queste in funzionamento ed aggiungere delle frecce che hanno funzione visiva implementarle mantenendo il codice o cmq basandomi su questo. 
 
 .
 un'immagine a forma di cerchio, dovrebbe relazionarsi allo spazio di un sito mobile rimanendo posizionata nell'angolo in basso a sinistra, di questo cerchio che ha il centro nel vertice di quell'angolo, viene mostrato solo il quarto in alto a destra, come se questo cerchio fosse diviso in quattro parti uguali, elabora in background che questa img html ha un determinato css che permetta questo risultato, io ho gia del codice sia css che js per il quale non ottengo il corretto posizionamento 
@@ -19,41 +78,52 @@ prima di procedere riassumi e fai un check dove assumi di aver capito quali sian
 
 .
 da essere posizionato in un layout mobile per cui l'elemento che ti chiedo di creare deve essere non molto grande e modulabile nel css indicandomi dove con un commento, è una levetta di un selettore simile ad una chitarra elettrica pensala tutta in metallo questa levetta ha due posizioni A e B
+
 __
-
-
 git add .
 git commit -m "Aggiornamento sito"
 git push
+
 __ 
 
 
 mobile:
+with JS full what happen to mobile and desktop?
+img caricata a cerchio che si adatta in dimensioni
+elementi da allineare a nuova disposizione
 
 
-
-è IL JS, dove? nell assegnazione da mobile a desk
 WOport1C 
 WOport2C 
 WOstripeC
 WOfreccia
 WOtextC
 WOjsC
-
 WObutton 
 WOmedia
- 
 
-ALL'ACCENSIONE APPARE LA SCRITTA
+css
+frecce + modifiche
+
+
+CONDIZIONE PRE ACCENSIONE PORT1 E PORT2 SONO OPACHI, LO SLIDER NON PRESENTA LE FRECCE, IL TESTO NON CE,  
+
+ALL'ACCENSIONE APPARE LA SCRITTA E VIENE RIVELATO LO SLIDER, LO SLIDER ENTRA EFFETTIVAMENTE IN FUNZIONAMENTO QUINDI L'APPARIZIONE DELLE FRECCE, 
+
+
+
 NO SCROLL, 
-DISPLAY NONE REVERSE, 
-IMG PORT HANNO ALTRE IMMAGINI NELLA VERSIONE MOBILE E CAMBIANO CON ALTRE SELEZIONATE NON TUTTE, SLIDER BACK ON 0 TOUCH OUT, AT THE 0 SLIDER NONE GOES, Illuminazione progressiva with JS and turn off, velocita massima dei dischi entro una certa soglia da definire non puo essere troppo veloce e di conseguenza l'altro disco non puo andare troppo piano allo stato 0 dischi fermi logo spento logo raggiunge massima illuminazione al top slide accelerazione progressiva sia nel caso di slide che di point top jump,
-button selettore to hide nella versione desktop
+IMG PORT HANNO ALTRE IMMAGINI NELLA VERSIONE MOBILE,
+SLIDER BACK ON 0 TOUCH OUT,
+AT THE 0 SLIDER NONE GOES AHEAD,
+Illuminazione progressiva with JS and turn basic,
+velocita massima dei dischi entro una certa soglia da definire non puo essere troppo veloce e di conseguenza l'altro disco non puo andare troppo piano allo stato 0, 
+dischi fermi raggiunge massima illuminazione al top slide,
+accelerazione progressiva sia nel caso di slide che di point top jump,
+button selettore to hide nella versione desktop,
 
-   
 __
-
-
+DISPLAY NONE REVERSE DESKTOP,
 desktop:
 
 bottone
@@ -72,7 +142,6 @@ testo "all mixed" appare su polaroid con logo
 vinyl
 
 faderimg
-
 
 __
 selezionare file grafici
