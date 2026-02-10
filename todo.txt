@@ -1,3 +1,45 @@
+git add .
+git commit -m "Aggiornamento sito"
+git push
+
+__ 
+mobile:
+
+COME WORKA/
+no scroll
+img caricata a cerchio che si adatta in dimensioni
+
+condizione pre power:
+ 
+port1 e port2 sono opachi 
+lo slider non presenta la freccia 
+il testo non appare
+
+
+condizione accesa:
+appare la scritta
+slider funziona
+slider back to 0 off touch
+at the 0 slider niente gira
+lo slider entra in funzionamento
+Illuminazione progressiva allo slider to logo
+velocita massima dei dischi entro una certa soglia troppo veloce e di conseguenza l'altro disco non puo andare troppo piano allo stato 0, 
+dischi fermi raggiunge massima illuminazione al top slide,
+accelerazione progressiva sia nel caso di slide che di point to jump,
+button selettore to hide nella versione desktop,
+ 
+
+WOport1C 
+WOport2C 
+WOstripeC
+WOfreccia
+WOtextC
+WOjsC
+WObutton 
+WOmedia
+
+
+__
 devo costruire questa dinamica in js:
 
 dato un bottone che viene premuto, acceso
@@ -8,8 +50,7 @@ dato lo stesso bottone che viene premuto, spento
 transizione di assolvimento, sparisce la freccia le img la scritta
 con un tempo
 
-
-__
+.
 PROMPT
 
 ho uno slider che funziona correttamente, questo è il suo codice html
@@ -115,47 +156,6 @@ prima di procedere riassumi e fai un check dove assumi di aver capito quali sian
 da essere posizionato in un layout mobile per cui l'elemento che ti chiedo di creare deve essere non molto grande e modulabile nel css indicandomi dove con un commento, è una levetta di un selettore simile ad una chitarra elettrica pensala tutta in metallo questa levetta ha due posizioni A e B
 
 __
-git add .
-git commit -m "Aggiornamento sito"
-git push
-
-__ 
-
-
-mobile:
-with JS full what happen to mobile and desktop?
-img caricata a cerchio che si adatta in dimensioni
-elementi da allineare a nuova disposizione
-
-
-WOport1C 
-WOport2C 
-WOstripeC
-WOfreccia
-WOtextC
-WOjsC
-WObutton 
-WOmedia
-
-css
-frecce + modifiche
-
-
-CONDIZIONE PRE ACCENSIONE PORT1 E PORT2 SONO OPACHI, LO SLIDER NON PRESENTA LE FRECCE, IL TESTO NON CE,  
-
-ALL'ACCENSIONE APPARE LA SCRITTA E VIENE RIVELATO LO SLIDER, LO SLIDER ENTRA EFFETTIVAMENTE IN FUNZIONAMENTO QUINDI L'APPARIZIONE DELLE FRECCE, 
-
-
-
-NO SCROLL, 
-IMG PORT HANNO ALTRE IMMAGINI NELLA VERSIONE MOBILE,
-SLIDER BACK ON 0 TOUCH OUT,
-AT THE 0 SLIDER NONE GOES AHEAD,
-Illuminazione progressiva with JS and turn basic,
-velocita massima dei dischi entro una certa soglia da definire non puo essere troppo veloce e di conseguenza l'altro disco non puo andare troppo piano allo stato 0, 
-dischi fermi raggiunge massima illuminazione al top slide,
-accelerazione progressiva sia nel caso di slide che di point top jump,
-button selettore to hide nella versione desktop,
 
 __
 DISPLAY NONE REVERSE DESKTOP,

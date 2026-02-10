@@ -1,8 +1,7 @@
-
-
 *{
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 body {
   font-family: 'Playfair Display';
@@ -10,12 +9,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: chocolate;
+  overflow: hidden;
 }
 
 #container {
   display: flex;
-  flex-direction: column;
-  overflow: hidden; 
+  flex-direction: column; 
   /*align-items: center;
   justify-content: center;
   gap: 4px;
@@ -105,8 +104,8 @@ body {
   right: 10px;
   top: 50%;
   transform: translateY(-50%) rotate(0deg);
-  width: 93px;
-  height: 24px;
+  width: 122px;
+  height: 30px;
   font-size: 54px;
   display: flex;
   align-items: center;
@@ -117,13 +116,11 @@ body {
 }
 
 
-
-
 .textDesign {
   font-size: 0;
 }
 .textDesign::after {
-  content: "Design & Javascript \A by QuoteAndQuit";
+  content: "Design & Javascript";
   white-space: pre-line;
   font-family: "Playfair Display";
   max-width: 100%;  
@@ -137,6 +134,23 @@ body {
   position: absolute;
   top: 303px;
   left: 0px;
+}
+
+.td2::after  {
+  content: "PORTFOLIO \A by QuoteAndQuit";
+  white-space: pre-line;
+  font-family: "Playfair Display";
+  max-width: 100%;  
+  word-break: break-word;
+  overflow-wrap: break-word;
+  padding: 2px 30px;
+  line-height: 0.9;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: left;
+  position: absolute;
+  top: 20px;
+  left: 0px; 
 }
 
 .port{
@@ -184,157 +198,7 @@ body {
 }
 
 
-/* ========================================
-   CRAVE METAL SWITCH STYLES
-   ======================================== */
 
-.crave-metal-switch {
-    --primary-color: #ff8c00;
-    --secondary-color: #ffaa30;
-    --dark-bg: #1f1f1f;
-    --metal-light: #c0c0c0;
-    --metal-dark: #808080;
-    --indicator-off: #333;
-    --indicator-on: #ffff00;
-}
-.metal-switch-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 120px;
-    perspective: 1000px;
-    position: absolute;
-    top: 2px;
-    left: 24px;
-}
-.metal-switch-body {
-    position: relative;
-    width: 36px;
-    height: 60px;
-    background: linear-gradient(145deg, #a8a8a8, #808080);
-    border-radius: 8px;
-    padding: 12px 8px;
-    box-shadow: 
-        0 8px 16px rgba(0, 0, 0, 0.6),
-        inset 0 1px 2px rgba(255, 255, 255, 0.3),
-        inset 0 -1px 2px rgba(0, 0, 0, 0.5);
-    border: 1px solid #606060;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-.metal-switch-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 8px;
-    background: repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 1px,
-        rgba(0, 0, 0, 0.1) 1px,
-        rgba(0, 0, 0, 0.1) 2px
-    );
-    pointer-events: none;
-}
-.metal-switch-label {
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    color: #000;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
-    text-transform: uppercase;
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    width: 100%;
-}
-.metal-switch-toggle {
-    position: relative;
-    width: 24px;
-    height: 24px;
-    background: linear-gradient(135deg, #d0d0d0 0%, #909090 50%, #707070 100%);
-    border-radius: 70%;
-    cursor: pointer;
-    box-shadow: 
-        0 6px 12px rgba(0, 0, 0, 0.5),
-        inset -1px -1px 3px rgba(0, 0, 0, 0.4),
-        inset 1px 1px 3px rgba(255, 255, 255, 0.4);
-    border: 2px solid #606060;
-    transition: all 0.3s ease;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.metal-switch-toggle:hover {
-    box-shadow: 
-        0 8px 16px rgba(0, 0, 0, 0.6),
-        inset -1px -1px 3px rgba(0, 0, 0, 0.4),
-        inset 1px 1px 3px rgba(255, 255, 255, 0.5);
-}
-.metal-switch-knob {
-    width: 24px;
-    height: 24px;
-    background: linear-gradient(135deg, #ffcc80 0%, #ff8c00 50%, #cc6600 100%);
-    border-radius: 50%;
-    box-shadow: 
-        0 3px 8px rgba(255, 140, 0, 0.4),
-        inset -1px -1px 2px rgba(0, 0, 0, 0.3),
-        inset 1px 1px 2px rgba(255, 255, 255, 0.2);
-    border: 1px solid #ff9500;
-}
-.metal-switch-toggle.active .metal-switch-knob {
-    box-shadow: 
-        0 3px 8px rgba(255, 140, 0, 0.6),
-        inset -1px -1px 2px rgba(0, 0, 0, 0.3),
-        inset 1px 1px 2px rgba(255, 255, 255, 0.3);
-}
-.metal-switch-indicator {
-    width: 10px;
-    height: 10px;
-    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-    border-radius: 3px;
-    border: 1px solid #404040;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 
-        inset 0 2px 4px rgba(0, 0, 0, 0.8),
-        0 2px 4px rgba(0, 0, 0, 0.5);
-    position: relative;
-    z-index: 2;
-}
-.indicator-light {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #333;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
-    transition: all 0.6s ease;
-}
-.metal-switch-toggle.active ~ .metal-switch-indicator .indicator-light {
-    background: #ffff00;
-    box-shadow: 
-        0 0 10px rgba(255, 255, 0, 0.8),
-        inset 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* Animazione glitch al click */
-@keyframes metal-glitch {
-    0%, 100% { transform: translate(0); }
-    20% { transform: translate(-1px, 1px); }
-    40% { transform: translate(1px, -1px); }
-    60% { transform: translate(-1px, -1px); }
-    80% { transform: translate(1px, 1px); }
-}
-.metal-switch-toggle.glitch {
-    animation: metal-glitch 0.15s ease-in-out;
-}
 
 
 

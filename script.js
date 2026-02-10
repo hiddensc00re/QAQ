@@ -1,3 +1,242 @@
+// ==========================================================================
+// LOGICA ON/OFF BOTTONE - GESTIONE STATI E INTERAZIONI
+// ==========================================================================
+// 
+// FUNZIONALITÀ PRINCIPALE:
+// - Gestisce due stati distinti: ON (acceso) e OFF (spento)
+// - Stato iniziale: OFF
+// - Toggle tra stati con metal-switch-toggle
+// - Applica/rimuove classi CSS per animazioni sincronizzate
+// - Protegge da click multipli durante l'animazione
+// - Freccia entra per ultima nella sequenza
+// 
+// ELEMENTO TRIGGER: metal-switch-toggle
+// ELEMENTI CONTROLLATI:
+// - #port1 (immagine 1)
+// - #port2 (immagine 2)
+// - #textDesign (testo design)
+// - #m (logo)
+// - .slider (contenitore freccia ::after)
+// 
+// TIMING: 400ms sincronizzato tra tutti gli elementi
+
+// ==========================================================================
+// ATTENDERE IL CARICAMENTO COMPLETO DEL DOM
+// ==========================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  
+  console.log('🔄 DOM caricato: inizio inizializzazione logica ON/OFF');
+
+  // ==========================================================================
+  // SELEZIONE ELEMENTO TRIGGER DAL DOM
+  // ==========================================================================
+  // Recupera l'elemento metal-switch-toggle che attiva il toggle
+  
+  const metalSwitchToggle = document.querySelector('metal-switch-toggle');
+  
+  console.log('✓ metal-switch-toggle selezionato:', metalSwitchToggle ? 'OK' : 'NON TROVATO');
+
+  // ==========================================================================
+  // SELEZIONE ELEMENTI DA CONTROLLARE DAL DOM
+  // ==========================================================================
+  // Recupera tutti gli elementi che cambieranno stato durante l'animazione
+  
+  const elementPort1 = document.querySelector('#port1');
+  const elementPort2 = document.querySelector('#port2');
+  const elementTextDesign = document.querySelector('#textDesign');
+  const elementLogo = document.querySelector('#m');
+  const elementSlider = document.querySelector('.slider');
+
+  
+  
+  console.log('✓ Elementi selezionati: 5 elementi per il toggle');
+
+  // ==========================================================================
+  // DEFINIZIONE DELL'ARRAY DI ELEMENTI
+  // ==========================================================================
+  // Raggruppa tutti gli elementi in un array per gestirli uniformemente
+  
+  const elementsToToggle = [
+    elementPort1,      // Indice 0
+    elementPort2,      // Indice 1
+    elementTextDesign, // Indice 2
+    elementLogo,       // Indice 3
+    elementSlider      // Indice 4 - Entra per ULTIMA con delay
+  ];
+
+  // ==========================================================================
+  // DICHIARAZIONE VARIABILI DI STATO
+  // ==========================================================================
+  // Mantengono traccia dello stato corrente del sistema
+  
+  let isOn = false;           // false = OFF (iniziale), true = ON
+  let isAnimating = false;    // true durante animazione, false quando finisce
+  const animationDuration = 400; // Durata in millisecondi
+  
+  console.log(`📋 Stato iniziale: OFF (isOn = ${isOn})`);
+  console.log(`⏱️  Durata animazione: ${animationDuration}ms`);
+
+  // ==========================================================================
+  // DEFINIZIONE FUNZIONE - APPLICA STATO AGLI ELEMENTI
+  // ==========================================================================
+  
+  function toggleElementState(shouldShow) {
+    
+    const classToToggle = 'active';
+    const action = shouldShow ? 'AGGIUNGI' : 'RIMUOVI';
+    
+    console.log(`\n🎬 Inizio animazione: ${action} classe 'active' a tutti gli elementi`);
+
+    // Itera su ogni elemento dell'array
+    elementsToToggle.forEach((element, index) => {
+      
+      if (element) {
+        if (shouldShow) {
+          // STATO ON: APPARIZIONE
+          element.classList.add(classToToggle);
+          console.log(`   ✓ Elemento ${index + 1} (${element.id || element.className}): classe aggiunta`);
+        } else {
+          // STATO OFF: SPARIZIONE
+          element.classList.remove(classToToggle);
+          console.log(`   ✓ Elemento ${index + 1} (${element.id || element.className}): classe rimossa`);
+        }
+      } else {
+        console.warn(`   ⚠️  Elemento ${index + 1}: NON TROVATO nel DOM`);
+      }
+    });
+
+    // Aggiorna lo stato visivo del metal-switch-toggle
+    if (shouldShow) {
+      metalSwitchToggle.classList.add(classToToggle);
+      console.log('   ✓ metal-switch-toggle: classe aggiunta (stato ON)');
+    } else {
+      metalSwitchToggle.classList.remove(classToToggle);
+      console.log('   ✓ metal-switch-toggle: classe rimossa (stato OFF)');
+    }
+
+    console.log(`✓ Animazione applicata a ${elementsToToggle.length + 1} elementi`);
+  }
+
+  // ==========================================================================
+  // DEFINIZIONE FUNZIONE - TOGGLE DELLO STATO PRINCIPALE
+  // ==========================================================================
+  
+  function handleToggleSwitch() {
+    
+    // PROTEZIONE: IGNORA CLICK DURANTE ANIMAZIONE
+    if (isAnimating) {
+      console.log('⏸️  CLICK IGNORATO: Animazione in corso, attendi fine');
+      return;
+    }
+
+    console.log('\n═══════════════════════════════════════════════════');
+    console.log('🖱️  SWITCH RILEVATO - metal-switch-toggle attivato');
+    console.log('═══════════════════════════════════════════════════\n');
+
+    // STEP 1: CAMBIA LO STATO
+    isOn = !isOn;
+    console.log(`📊 Stato cambiato: ${isOn ? '🟢 ON' : '🔴 OFF'}`);
+
+    // STEP 2: ATTIVA IL FLAG DI PROTEZIONE
+    isAnimating = true;
+    console.log(`🔒 Protezione attivata: click bloccati per ${animationDuration}ms`);
+
+    // STEP 3: APPLICA LE CLASSI CSS
+    toggleElementState(isOn);
+
+    // STEP 4: DISATTIVA LA PROTEZIONE DOPO L'ANIMAZIONE
+    setTimeout(() => {
+      isAnimating = false;
+      console.log(`\n🔓 Protezione disattivata: click riabilitati`);
+      console.log(`═══════════════════════════════════════════════════\n`);
+    }, animationDuration);
+  }
+
+  // ==========================================================================
+  // COLLEGAMENTO EVENT LISTENER AL metal-switch-toggle
+  // ==========================================================================
+  // Ascolta il cambio di stato dell'elemento metal-switch-toggle
+  
+  if (metalSwitchToggle) {
+    // Ascolta l'evento 'change' del metal-switch-toggle
+    metalSwitchToggle.addEventListener('change', handleToggleSwitch);
+    console.log('✓ Event listener collegato: cambio metal-switch-toggle');
+  } else {
+    console.error('❌ ERRORE: metal-switch-toggle non trovato!');
+  }
+
+  // ==========================================================================
+  // LOG DI INIZIALIZZAZIONE COMPLETATA
+  // ==========================================================================
+  
+  console.log(`
+╔═══════════════════════════════════════════════════════════╗
+║       ✓ INIZIALIZZAZIONE COMPLETATA                      ║
+╠═══════════════════════════════════════════════════════════╣
+║                                                           ║
+║ 🔌 ELEMENTO TRIGGER: metal-switch-toggle                ║
+║ 📊 STATO INIZIALE: OFF (spento)                          ║
+║ 🎯 ELEMENTI CONTROLLATI: 5                               ║
+║    1. #port1 (immagine)                                  ║
+║    2. #port2 (immagine)                                  ║
+║    3. #textDesign (testo)                                ║
+║    4. #m (logo)                                          ║
+║    5. .slider (freccia ::after) - Entra per ULTIMA       ║
+║                                                           ║
+║ ⏱️  DURATA ANIMAZIONE: 400ms (sincronizzato)             ║
+║ 🔒 PROTEZIONE: Attiva durante l'animazione              ║
+║                                                           ║
+║ 💡 PROSSIMO PASSO: Attiva il switch metal-switch-toggle ║
+║    per togglare gli elementi tra ON e OFF               ║
+║                                                           ║
+╚═══════════════════════════════════════════════════════════╝
+  `);
+
+}); // Fine DOMContentLoaded
+
+// ==========================================================================
+// RIEPILOGO LOGICA DI FUNZIONAMENTO
+// ==========================================================================
+// 
+// STATO OFF (INIZIALE):
+// - metal-switch-toggle: spento, niente classe 'active'
+// - Elementi: invisibili (class='active' non presente)
+// - Layout: stabile, nessuna animazione
+// 
+// PRIMO ATTIVAZIONE SWITCH → TRANSIZIONE A ON:
+// 1. isOn diventa true
+// 2. isAnimating diventa true (blocca altri trigger)
+// 3. Aggiunge class='active' a tutti gli elementi
+// 4. CSS trigghera animazioni (fade-in, scale)
+// 5. Dopo 400ms: isAnimating diventa false (switch ok)
+// 
+// STATO ON (POST-ANIMAZIONE):
+// - metal-switch-toggle: acceso, ha classe 'active'
+// - Elementi: visibili, hanno classe 'active'
+// - Layout: stabile, animazione completata
+// 
+// SECONDO ATTIVAZIONE SWITCH → TRANSIZIONE A OFF:
+// 1. isOn diventa false
+// 2. isAnimating diventa true (blocca altri trigger)
+// 3. Rimuove class='active' da tutti gli elementi
+// 4. CSS trigghera animazioni (fade-out, scale down)
+// 5. Dopo 400ms: isAnimating diventa false (switch ok)
+// 
+// Il ciclo si ripete infinitamente.
+// 
+// ==========================================================================
+// PUNTI CHIAVE IMPLEMENTAZIONE
+// ==========================================================================
+// 
+// ✓ ELEMENTO TRIGGER: metal-switch-toggle con evento 'change'
+// ✓ SINCRONIZZAZIONE: Tutti gli elementi cambiano insieme (400ms)
+// ✓ FRECCIA PER ULTIMA: Delay CSS su .slider::after (0.1s)
+// ✓ PROTEZIONE: Durante animazione, nuovi trigger vengono ignorati
+// ✓ STABILITÀ LAYOUT: CSS gestisce animazioni, JS solo stato
+// ✓ MANUTENIBILITÀ: Codice commentato e ben strutturato
+
+
 /* ========================================
    CRAVE METAL SWITCH FUNCTIONALITY
    ======================================== */
