@@ -79,8 +79,6 @@ body {
   height: 0;
   border: none;
 }
-
-
 /*#slider::after {
   content: "➾";
   position: absolute;
@@ -107,7 +105,6 @@ body {
   top: 26px;
   z-index: 200;
 }
-
 .slider-arrow2 {
   position: absolute;
   font-size: 18px;
@@ -115,7 +112,7 @@ body {
   color: white;
   opacity: 0.6;
   right: 93px;
-  top: 08px;
+  top: 8px;
   z-index: 200;
   font-size: 42px;
 }
@@ -139,7 +136,6 @@ body {
   top: 303px;
   left: 0px;
 }
-
 .td2::after  {
   content: "PORTFOLIO \A by QuoteAndQuit";
   white-space: pre-line;
@@ -159,9 +155,8 @@ body {
 
 .port{
   border-radius: 50%;
-  mask-image: radial-gradient(circle, transparent 22%, black 55%);  
+  mask-image: radial-gradient(circle, transparent 5%, black 20%);  
 }
-
 #port1{
   position: absolute;       
   top: 8%;                 
@@ -173,7 +168,6 @@ body {
   margin-right: -230px;
   z-index: 9;
 }
-
 #port2 {
   position: absolute;
   left: -300px;
@@ -202,17 +196,14 @@ body {
 #d4, .footer-p, .polaroid-container, .btnp, #draw1{
   display: none;
 }
+
+
+
+
+
+
+
 /*
-
-
-
-
-
-
-/*
-
-
-
 
 
 .leds {
