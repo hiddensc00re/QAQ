@@ -1,0 +1,14 @@
+#SoluzioneDifficoltàAffidabilità su mobileNote / Trade-off1Sposta la freccia fuori dallo slider e mettila in un <span> o <div> separatoBassa★★★★★Metodo più stabile. Posizionalo con position: absolute rispetto allo stesso contenitore dello slider.
+
+2Aggiungi transform: translateZ(0) o will-change: transform allo slider e al ::afterBassa★★★★☆Forza un nuovo layer di rendering/compositing → spesso risolve sparizioni
+
+3Metti position: relative + isolation: isolate sullo slider (o sul .slider-container)Bassa★★★★☆Crea un nuovo stacking context → pseudo-elementi non spariscono più dietro ad altri layer
+
+4Usa un SVG inline come freccia invece di content: "➾"Media★★★★★SVG ruotato è molto più affidabile di emoji + pseudo su mobile
+
+5Riduci drasticamente l'angolo di rotazione per test (es. -90° o -270°)Bassa (test)—Serve solo per capire se è proprio l'angolo estremo (-222°) a creare il bug
+
+6Usa due slider: uno invisibile (per l'interazione) + uno "finto" solo decorativo ruotato senza input nativoAlta★★★★★Soluzione nuclear, ma risolve tutti i problemi di compatibilità transform + range
+
+7Prova backface-visibility: visible e -webkit-backface-visibility: visible sullo sliderBassa★★★☆☆A volte risolve artefatti di rotazione su WebKit/iOS
+
