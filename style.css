@@ -4,13 +4,18 @@
   padding: 0;
   overflow: hidden;
 }
-body {
+html, body {
   font-family: 'Playfair Display';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: chocolate;
+  margin: 0;
+  height: 100%;
   overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
+
 
 #container {
   display: flex;
@@ -18,7 +23,8 @@ body {
   align-items: center;
   justify-content: center;
   gap: 4px;
-  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
 }
 .view {
   height: 100vh;
@@ -43,11 +49,13 @@ body {
 #d3 {  
   width: 100%;
 }
+
 .slider-container{
   z-index: 99;
   height: 1000px;
   align-items: center;
   justify-content: center;
+  position:relative;
 }
 #slider {
   position: relative;
@@ -101,17 +109,16 @@ body {
   translate: translateY(-50%)(-10deg);
   color: white;
   opacity: 0.6;
-  right: 260px;
+  right: 169px;
   top: 26px;
   z-index: 200;
 }
 .slider-arrow2 {
   position: absolute;
-  font-size: 18px;
   translate: translateY(-50%)(-10deg);
   color: white;
   opacity: 0.6;
-  right: 93px;
+  right: 44px;
   top: 8px;
   z-index: 200;
   font-size: 42px;
@@ -133,7 +140,7 @@ body {
   font-weight: bold;
   text-align: left;
   position: absolute;
-  top: 303px;
+  top: 273px;
   left: 0px;
 }
 .td2::after  {
@@ -149,7 +156,7 @@ body {
   font-weight: bold;
   text-align: left;
   position: absolute;
-  top: 323px;
+  top: 303px;
   left: 0px; 
 }
 
@@ -181,7 +188,7 @@ body {
   width: 222px; 
   height: 164px;
   position: absolute;
-  top: 200px;
+  top: 170px;
   left: -44px;
   opacity: 0.3;
   filter: brightness(0.4);
